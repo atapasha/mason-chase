@@ -1,0 +1,64 @@
+<div class="container mt-5">
+    <h1>{{header}}</h1>
+    <form (ngSubmit)="onSubmit(f)" #f="ngForm">
+        <div class="form-group">
+            <label for="id">Id</label>
+            <input type="text" required class="form-control" ngModel name="id">
+
+        </div>
+
+
+
+        <label for="fname">firstName</label>
+        <input id="fname" type="text" name="firstName" required class="form-control" [(ngModel)]="employee.firstName"
+            #firstName="ngModel">
+
+        <span class="error" *ngIf="firstName.invalid && firstName.touched">this field is required</span>
+
+
+
+
+
+
+        <div class="form-group">
+            <label for="lname">lastName</label>
+            <input id="lname" required type="text" class="form-control" ngModel name="lastName" #name="ngModel">
+
+        </div>
+
+        <div class="form-group">
+            <label for="bday">birthDate</label>
+            <input id="bday" type="date" class="form-control" ngModel name="birthDate">
+
+        </div>
+        <div class="form-group">
+            <label for="email">Email</label>
+            <input id="email" type="email" email="true" name="email" required class="form-control"
+                [(ngModel)]="employee.email" #email="ngModel"> <span class="error"
+                *ngIf="email.invalid &&email.touched">Correct form
+                is
+                required</span>
+
+        </div>
+
+        <div class="form-group">
+            <label for="ph">Phone</label>
+            <input type="text" class="form-control" ngModel name="phone">
+
+        </div>
+        <div class="form-group">
+            <label for="bankNumber">BankAccountNumber</label>
+            <input id="bankNumber" type="text" name="bankAccountNumber" required class="form-control"
+                [(ngModel)]="employee.bankAccountNumber" minlength="5" ng-pattern="/^[0-9]*$/" maxlength="10"
+                #bankAccountNumber="ngModel">
+            <span class="error" *ngIf="bankAccountNumber.invalid &&bankAccountNumber.touched">this
+                field is
+                required</span>
+
+        </div>
+
+        <button type=" submit" class="btn btn-primary">Save</button>
+
+
+    </form>
+</div>
